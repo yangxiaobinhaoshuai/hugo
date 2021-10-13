@@ -1,9 +1,23 @@
 apply plugin: 'groovy'
 apply plugin: 'nexus'
+apply plugin: 'maven-publish'
 
 
-targetCompatibility = JavaVersion.VERSION_1_7
-sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+publishing {
+  publications {
+    maven(MavenPublication) {
+      groupId = 'me.yangxiaobin.plugin'
+      artifactId = 'hugo'
+      version = '1.0'
+
+      from components.java
+    }
+  }
+}
+
 
 dependencies {
   compile gradleApi()
